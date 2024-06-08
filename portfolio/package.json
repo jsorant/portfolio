@@ -11,8 +11,11 @@
     "format": "prettier --write ./src",
     "test": "vitest --run",
     "test:watch": "vitest --ui",
-    "test:component": "TODO : start server and run cypress",
-    "test:component:ci": "TODO : start server and run tests"
+    "test:component:start": "vite --port 3030",
+    "test:component:open": "cypress open",
+    "test:component:run": "cypress run",
+    "test:component": "start-server-and-test test:component-start http://localhost:3030 test:component:open",
+    "test:component:ci": "start-server-and-test test:component-start http://localhost:3030 test:component:run"
   },
   "dependencies": {
     "react": "^18.2.0",

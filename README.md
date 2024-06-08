@@ -2,7 +2,7 @@
 
 https://medium.com/@nedopaka/setup-a-react-vite-project-with-swc-prettier-vitest-2024-62ecff357c7b
 
-## Create React App with ts
+deps :
 
 ```
 npm create vite@latest
@@ -10,9 +10,11 @@ npm i -D -E prettier
 npm i -D eslint-config-prettier
 npm i -D eslint eslint-plugin-react 
 npm i -D vitest jsdom @testing-library/jest-dom @testing-library/react
+npm i -D cypress
+npm i -D start-server-and-test
 ```
 
-eslint.cjs:
+eslint.cjs :
 
 ```
  extends: [
@@ -26,13 +28,6 @@ eslint.cjs:
         // Make sure it's always the last config, so it gets the chance to override other configs.
         'prettier',
     ],
-```
-
-vitest :
-
-```
-    "test": "vitest --run",
-    "test:watch": "vitest --ui"
 ```
 
 vitest.config.ts
@@ -52,12 +47,6 @@ export default defineConfig({
 });
 ```
 
-cypress
-
-```
-npm install cypress --save-dev
-```
-
 cypress/tsconfig.json
 
 ```
@@ -69,4 +58,11 @@ cypress/tsconfig.json
   },
   "include": ["**/*.ts"]
 }
+```
+
+package.json :
+
+```
+    "test": "vitest --run",
+    "test:watch": "vitest --ui"
 ```
