@@ -1,8 +1,6 @@
-# Steps
+# Init Vite + Vitest + React projects
 
-https://medium.com/@nedopaka/setup-a-react-vite-project-with-swc-prettier-vitest-2024-62ecff357c7b
-
-deps :
+### Dependencies
 
 ```
 npm create vite@latest
@@ -13,6 +11,8 @@ npm i -D vitest jsdom @testing-library/jest-dom @testing-library/react
 npm i -D cypress
 npm i -D start-server-and-test
 ```
+
+### Eslint
 
 eslint.cjs :
 
@@ -29,6 +29,8 @@ eslint.cjs :
         'prettier',
     ],
 ```
+
+### Vitest
 
 vitest.config.ts
 
@@ -47,6 +49,8 @@ export default defineConfig({
 });
 ```
 
+### Cypress
+
 cypress/tsconfig.json
 
 ```
@@ -60,9 +64,23 @@ cypress/tsconfig.json
 }
 ```
 
+### Scripts
+
 package.json :
 
 ```
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
+    "format": "prettier --write ./src",
     "test": "vitest --run",
-    "test:watch": "vitest --ui"
+    "test:watch": "vitest --ui",
+    "test:component:start": "vite --port 3030",
+    "test:component:open": "cypress open",
+    "test:component:run": "cypress run",
+    "test:component": "start-server-and-test test:component:start http://localhost:3030 test:component:open",
+    "test:component:ci": "start-server-and-test test:component:start http://localhost:3030 test:component:run"
+  },
 ```
